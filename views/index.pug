@@ -1,19 +1,22 @@
 extends layout
 
 block content
-  h1 Welcome to #{title}
-  
-  h3 Messages:
-  
-  - for (let i = 0; i < messages.length; i++) {
-    h3= messages[i].user
-    p= messages[i].text
-    p= messages[i].added
-  - }
+  .container
+    header
+      h1.welcome Welcome to #{title}
+    
+    section.messages
+      h3 Messages:
+      
+      each message in messages
+        .message
+          h3.username= message.user
+          p.message-text= message.text
+          p.message-date= new Date(message.added).toLocaleString()
 
-  script.
-    function redirectToNewPage() {
-      window.location.href = '/new';
-    }
-
-  button(onclick="redirectToNewPage()") Add message
+    footer
+      button(onclick="redirectToNewPage()") Add a New Message
+      script.
+        function redirectToNewPage() {
+          window.location.href = "/new";
+        }

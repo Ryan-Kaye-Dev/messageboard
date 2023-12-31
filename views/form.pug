@@ -1,4 +1,14 @@
-form(method="POST" action="/new")
-  input(type="text" name="user" value="Anonymous")
-  textarea(type="text" name="text" value="Hello!")
-  input(type="submit" value="Add message")
+extends layout
+
+block content
+  .container
+    section.new-message
+      h3 Add a New Message
+      form(method="POST" action="/new")
+        label(for="user") Username:
+        input(type="text" name="user" value="Anonymous" required)
+        
+        label(for="text") Message:
+        textarea(name="text" placeholder="Type your message here" rows="8" required)
+        
+        button(type="submit") Add Message
