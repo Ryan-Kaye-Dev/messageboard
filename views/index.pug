@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1 Welcome to #{title}
+  
+  h3 Messages:
+  
+  - for (let i = 0; i < messages.length; i++) {
+    h3= messages[i].user
+    p= messages[i].text
+    p= messages[i].added
+  - }
+
+  script.
+    function redirectToNewPage() {
+      window.location.href = '/new';
+    }
+
+  button(onclick="redirectToNewPage()") Add message
